@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uddandi Nikhitha Sree - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1200px;
+            color: white;
+            z-index: 1;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+        }
+
+        .hero-photo img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 25px;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .main-content {
+            background: var(--light);
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+            border-radius: 30px 30px 0 0;
+        }
+
+        section {
+            padding: 100px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--gray);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-top: 5px solid var(--primary);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .skill-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-card, .experience-card {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .project-card {
+            border-left: 5px solid var(--accent);
+        }
+
+        .experience-card {
+            border-left: 5px solid var(--secondary);
+        }
+
+        .project-card:hover, .experience-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+        }
+
+        .project-card h3, .experience-card h3 {
+            color: var(--dark);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .project-meta, .experience-meta {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-summary, .experience-summary {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .project-details, .experience-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 25px;
+            padding-top: 0;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .project-details.active, .experience-details.active {
+            max-height: 1000px;
+            padding-top: 25px;
+        }
+
+        .project-description, .experience-description {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .project-skills, .experience-skills {
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .project-skills {
+            color: var(--primary);
+        }
+
+        .experience-skills {
+            color: var(--secondary);
+        }
+
+        .expand-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .expand-btn:hover {
+            transform: scale(1.05);
+        }
+
+        #contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        #contact .section-header h2 {
+            color: white;
+            -webkit-text-fill-color: white;
+        }
+
+        #contact .section-header p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero h1 { 
+                font-size: 3rem; 
+            }
+
+            .hero-photo img {
+                width: 220px;
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            .section-header h2 { font-size: 2rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .hero-photo img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-photo">
+            <img src="images/Nikhitha.jpeg" alt="Uddandi Nikhitha Sree">
+            </div>
+            <div class="hero-text">
+                <h1>Uddandi Nikhitha Sree</h1>
+                <p class="subtitle">Computer Science & Engineering Student | AI/ML Enthusiast</p>
+                <a href="#about" class="cta-button">Explore My Work</a>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <section id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About Me</h2>
+                    <p>Passionate about building intelligent solutions</p>
+                </div>
+                <div class="about-content">
+                    <p>Hi, I'm Uddandi Nikhitha Sree. I am a Computer Science and Engineering student at VIT-AP University. I'm skilled and passionate about emerging technologies such as <strong>Machine Learning, Deep Learning, and Natural Language Processing</strong>. I enjoy exploring innovative tools and frameworks, and my curiosity drives me to develop data-driven solutions. I strongly believe that hands-on experience is the key to gaining deep and practical knowledge.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Skills & Expertise</h2>
+                    <p>Building solutions that blend creativity, data, and intelligence</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>🎨 Frontend Development</h3>
+                        <p>From coding responsive interfaces with HTML, CSS, and React.js to training machine learning models in Python, I love bringing ideas to life through code.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h3>💻 Programming & DSA</h3>
+                        <p>I have a strong foundation in Data Structures and Algorithms using Java, which strengthens my problem-solving and analytical thinking.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Data Structures</span>
+                            <span class="skill-tag">Algorithms</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h3>🤖 Machine Learning</h3>
+                        <p>My comfort zone lies at the intersection of data and intelligence — where tools like TensorFlow, PyTorch, and scikit-learn help me experiment with prediction, recommendation, and automation.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">scikit-learn</span>
+                            <span class="skill-tag">SQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h3>🧠 Deep Learning & NLP</h3>
+                        <p>I've explored the depths of Deep Learning, working with CNNs, RNNs, and Transformers, and ventured into Natural Language Processing using BERT and GPT.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">CNNs</span>
+                            <span class="skill-tag">RNNs</span>
+                            <span class="skill-tag">Transformers</span>
+                            <span class="skill-tag">BERT</span>
+                            <span class="skill-tag">GPT</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h3>🛠️ Tools & Workflow</h3>
+                        <p>I make the most of VS Code, Jupyter Notebook, and GitHub to streamline my workflow and collaborate effectively.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Jupyter</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Git</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h3>🌟 Soft Skills</h3>
+                        <p>I bring strong soft skills including critical thinking, effective communication, teamwork, adaptability, and creativity to deliver impactful solutions in collaborative environments.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Critical Thinking</span>
+                            <span class="skill-tag">Communication</span>
+                            <span class="skill-tag">Teamwork</span>
+                            <span class="skill-tag">Adaptability</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Projects</h2>
+                    <p>Innovative solutions powered by AI and data</p>
+                </div>
+                <div class="project-card">
+                    <h3>AI Strategic Intelligence System</h3>
+                    <p class="project-meta">Python, LLMs, Streamlit, Prophet, Slack SDK</p>
+                    <p class="project-summary">Developed a multi-module AI system to track, analyze, and forecast trends in AI/ML, delivering actionable market insights in real time.</p>
+                    <button class="expand-btn" onclick="toggleDetails(this)">Read More</button>
+                    <div class="project-details">
+                        <p class="project-description">I built a comprehensive AI-driven market intelligence platform that aggregates news, performs sentiment analysis, and forecasts trends. Using Google Gemini API and NewsAPI, the system collects real-time data, while LLM-based sentiment analysis identifies market sentiment shifts. Predictive trend forecasting was implemented with Prophet and FinBERT, and significant insights trigger automated Slack alerts. An interactive Streamlit dashboard allows visualization of sentiment trajectories, anomalies, share of voice, and downloadable reports.</p>
+                        <p class="project-skills"><strong>Skills & Tools:</strong> Python, Pandas, BeautifulSoup, Statsmodels, Matplotlib, Seaborn, Hugging Face Transformers, Streamlit, Prophet, Slack SDK</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Credit Card Fraud Detection</h3>
+                    <p class="project-meta">Python, Random Forest, Flask | Mar 2025</p>
+                    <p class="project-summary">Built a real-time credit card fraud detection system using Random Forest, achieving high accuracy and deployed via Flask.</p>
+                    <button class="expand-btn" onclick="toggleDetails(this)">Read More</button>
+                    <div class="project-details">
+                        <p class="project-description">To tackle fraudulent transactions, I trained a Random Forest model on a balanced dataset (492 fraud vs 492 normal transactions), optimizing performance using 30 PCA features. The model was deployed as a Flask web application, enabling real-time classification. This project combined my knowledge of Python, machine learning, PCA, and web deployment, allowing me to deliver a practical solution for fraud detection.</p>
+                        <p class="project-skills"><strong>Skills & Tools:</strong> Python, Random Forest, PCA, Flask, Data Preprocessing</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>E-Commerce Recommendation System</h3>
+                    <p class="project-meta">Python, SQL, Flask | Jan 2025</p>
+                    <p class="project-summary">Engineered a real-time product recommendation system using rating and content-based filtering techniques.</p>
+                    <button class="expand-btn" onclick="toggleDetails(this)">Read More</button>
+                    <div class="project-details">
+                        <p class="project-description">I developed an E-Commerce recommendation engine that generates personalized product suggestions by combining content-based filtering with rating-based approaches. The system uses SQL databases for data storage and retrieval, and a Flask backend to deliver recommendations in real time. This project strengthened my skills in Python, SQL, and full-stack deployment, while delivering a tangible user-facing solution.</p>
+                        <p class="project-skills"><strong>Skills & Tools:</strong> Python, SQL, Flask, Content-Based Filtering, Rating-Based Filtering</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Sentiment Analysis of Movie Reviews</h3>
+                    <p class="project-meta">Machine Learning | Oct 2024</p>
+                    <p class="project-summary">Built ML models for sentiment classification of movie reviews with interpretable results using LIME.</p>
+                    <button class="expand-btn" onclick="toggleDetails(this)">Read More</button>
+                    <div class="project-details">
+                        <p class="project-description">In this project, I applied machine learning algorithms like Logistic Regression and Decision Trees to classify movie reviews as positive or negative using TF-IDF features. To ensure interpretability, I implemented LIME for feature importance analysis, gaining insights into what drove the model's predictions. This project enhanced my understanding of NLP pipelines, feature engineering, and model interpretability.</p>
+                        <p class="project-skills"><strong>Skills & Tools:</strong> Python, Machine Learning, TF-IDF, Logistic Regression, Decision Trees, LIME</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Professional Experience</h2>
+                    <p>Building expertise through real-world applications</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Infosys Springboard Internship</h3>
+                    <p class="experience-meta">AI Intern | Aug 2025 – Oct 2025</p>
+                    <p class="experience-summary">Developed an AI-driven market intelligence system with real-time trend analysis, forecasting, and interactive visualization.</p>
+                    <button class="expand-btn" onclick="toggleDetails(this)">Read More</button>
+                    <div class="experience-details">
+                        <p class="experience-description">During my internship at Infosys Springboard, I built a multi-module AI platform to track, analyze, and forecast trends in AI/ML. I implemented LLM-based sentiment analysis and trend forecasting using Prophet and FinBERT, with automated Slack alerts for significant market shifts. An interactive Streamlit dashboard was designed to visualize sentiment trajectories, anomalies, share of voice, and downloadable reports.</p>
+                        <p class="experience-skills"><strong>Skills & Tools:</strong> Python, Streamlit, Prophet, FinBERT, Hugging Face Transformers, Slack SDK</p>
+                    </div>
+                </div>
+                <div class="experience-card">
+                    <h3>Amazon ML Summer School</h3>
+                    <p class="experience-meta">ML Trainee | Aug 2025 | Online</p>
+                    <p class="experience-summary">Selected through a technical exam to participate in Amazon's ML Summer School, gaining advanced training in cutting-edge ML topics.</p>
+                    <button class="expand-btn" onclick="toggleDetails(this)">Read More</button>
+                    <div class="experience-details">
+                        <p class="experience-description">Shortlisted for Amazon's ML Summer School, I received hands-on training from Amazon experts in Deep Learning, Reinforcement Learning, Generative AI, LLMs, and Causal Inference. This experience enhanced my understanding of advanced machine learning techniques and practical problem-solving in real-world AI scenarios.</p>
+                        <p class="experience-skills"><strong>Skills & Tools:</strong> Deep Learning, Reinforcement Learning, Generative AI, LLMs, Causal Inference</p>
+                    </div>
+                </div>
+                <div class="experience-card">
+                    <h3>Edubot Startup</h3>
+                    <p class="experience-meta">Web Development Trainee | Feb 2025 – Jul 2025 | Online (VIT-AP, Amaravati)</p>
+                    <p class="experience-summary">Developed responsive UI pages for a student dashboard using modern front-end technologies.</p>
+                    <button class="expand-btn" onclick="toggleDetails(this)">Read More</button>
+                    <div class="experience-details">
+                        <p class="experience-description">At Edubot, I gained hands-on experience in HTML, CSS, JavaScript, React.js, Tailwind CSS, and ShadCN. I worked on building responsive pages for a student dashboard project, enhancing my skills in front-end design, component-based development, and creating interactive user interfaces.</p>
+                        <p class="experience-skills"><strong>Skills & Tools:</strong> HTML, CSS, JavaScript, React.js, Tailwind CSS, ShadCN</p>
+                    </div>
+                </div>
+                <div class="experience-card">
+                    <h3>NLC India Limited</h3>
+                    <p class="experience-meta">Software Development Trainee | Dec 2024 – Jan 2025 | Tamil Nadu, India</p>
+                    <p class="experience-summary">Automated analysis of customer product requests using Python for efficient data processing and visualization.</p>
+                    <button class="expand-btn" onclick="toggleDetails(this)">Read More</button>
+                    <div class="experience-details">
+                        <p class="experience-description">During my tenure at NLC India Limited, I designed a Python-based tool to automate the analysis of customer product requests. Using Pandas and Matplotlib, I streamlined data processing and visualization, enabling faster insights and actionable reporting.</p>
+                        <p class="experience-skills"><strong>Skills & Tools:</strong> Python, Pandas, Matplotlib, Data Analysis, Automation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get In Touch</h2>
+                    <p>Let's connect and create something amazing together</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <a href="mailto:unikhithasree@gmail.com">unikhithasree@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/NikhithaSree24" target="_blank">github.com/NikhithaSree24</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <h3>LinkedIn</h3>
+                        <a href="https://linkedin.com/in/nikhithasreelinkedin" target="_blank">linkedin.com/in/nikhithasreelinkedin</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; Uddandi Nikhitha Sree</p>
+    </footer>
+
+    <script>
+        function toggleDetails(btn) {
+            const card = btn.closest('.project-card, .experience-card');
+            const details = card.querySelector('.project-details, .experience-details');
+            
+            if (details.classList.contains('active')) {
+                details.classList.remove('active');
+                btn.textContent = 'Read More';
+            } else {
+                details.classList.add('active');
+                btn.textContent = 'Show Less';
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
